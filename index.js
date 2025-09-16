@@ -2,6 +2,25 @@ const http = require("http")
 
 const limit = 2**25
 
+const magnitude = Math.floor(Math.log10(limit) / 3)
+
+const magnitudeNames = [
+	"",
+	" thousand",
+	" million",
+	" billion",
+	" trillion",
+	" quadrillion",
+	" quintillion",
+	" sextillion",
+	" septillion",
+	" octillion",
+	" nonillion",
+	" decillion"
+]
+
+const title = Math.floor(limit / 1000**magnitude) + magnitudeNames[magnitude] + " if statements to check if a number is even"
+
 const port = 8080
 
 const options = {
@@ -13,7 +32,7 @@ const startHTML = `
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Check if a number is even</title>
+		<title>${title}</title>
 		<style>
 			body {
 				min-height: 90vh;
